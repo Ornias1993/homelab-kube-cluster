@@ -5,7 +5,7 @@ metadata:
   name: argocd-cm
 data:
   kustomize.buildOptions: --enable-alpha-plugins --enable-helm
-  url: https://argocd.k3s.danmanners.io
+  # url: https://argocd.pantheon.schouten-lebbing.nl
 ---
 apiVersion: v1
 kind: ConfigMap

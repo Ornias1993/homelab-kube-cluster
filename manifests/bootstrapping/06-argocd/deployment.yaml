@@ -36,41 +36,52 @@ metadata:
 spec:
   template:
     spec:
-      nodeSelector:
-        kubernetes.io/arch: amd64
       initContainers:
         - name: install-ksops
           image: viaductoss/ksops:v3.0.2
           command: ["/bin/sh", "-c"]
           args:
             - echo "Installing KSOPS...";
-              mv ksops /custom-tools/;
+              export PKG_NAME=ksops;
+              mv ${PKG_NAME}.so /custom-tools/;
               mv $GOPATH/bin/kustomize /custom-tools/;
               echo "Done.";
           volumeMounts:
             - mountPath: /custom-tools
               name: custom-tools
-      containers:
-        - name: argocd-repo-server
-          imagePullPolicy: Always
-          resources: {}
-          volumeMounts:
-            - mountPath: /home/argocd/.aws
-              name: argocd-aws-credentials
-            - mountPath: /usr/local/bin/kustomize
-              name: custom-tools
-              subPath: kustomize
-              # Verify this matches a XDG_CONFIG_HOME=/.config env variable
-            - mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
-              name: custom-tools
-              subPath: ksops
+        - name: import-gpg-key
+          image: argoproj/argocd:v2.1.7
+          command: ["gpg", "--import","/sops-gpg/sops.asc"]
           env:
-            - name: XDG_CONFIG_HOME
-              value: /.config
+            - name: GNUPGHOME
+              value: /gnupg-home/.gnupg
+          volumeMounts:
+            - mountPath: /sops-gpg
+              name: sops-gpg
+            - mountPath: /gnupg-home
+              name: gnupg-home
+      containers:
+      - name: argocd-repo-server
+        env:
+          - name: XDG_CONFIG_HOME
+            value: /.config
+          - name: GNUPGHOME
+            value: /home/argocd/.gnupg
+        volumeMounts:
+        - mountPath: /home/argocd/.gnupg
+          name: gnupg-home
+          subPath: .gnupg
+        - mountPath: /usr/local/bin/kustomize
+          name: custom-tools
+          subPath: kustomize
+        - mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
+          name: custom-tools
+          subPath: ksops
       volumes:
-        - name: custom-tools
-          emptyDir: {}
-        - name: argocd-aws-credentials
-          secret:
-            defaultMode: 420
-            secretName: argocd-aws-credentials
+      - name: custom-tools
+        emptyDir: {}
+      - name: gnupg-home
+        emptyDir: {}
+      - name: sops-gpg
+        secret:
+          secretName: sops-gpg

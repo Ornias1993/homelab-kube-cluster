@@ -20,5 +20,5 @@ spec:
         selector:
           dnsZones:
             - "danmanners.com"
-            - "danmanners.io"
-            - "k3s.danmanners.io"
+            - "schouten-lebbing.nl"
+            - "pantheon.schouten-lebbing.nl"

@@ -1,7 +1,6 @@
 creation_rules:
   - path_regex: talos/.*
-    kms: "arn:aws:kms:us-east-1:977656673179:key/7e829b85-6fed-4598-b675-8ebeea105c4c"
-    aws_profile: default
-  - encrypted_regex: ^(data|stringData)$
-    kms: "arn:aws:kms:us-east-1:977656673179:key/7e829b85-6fed-4598-b675-8ebeea105c4c"
-    aws_profile: default
+    pgp: 1B9AA9EB9919843CDD0B8983966F446F201E8DDD
+  - path_regex: manifests/.*\.sops\.ya?ml
+    encrypted_regex: "^(data|stringData)$"
+    pgp: 1B9AA9EB9919843CDD0B8983966F446F201E8DDD

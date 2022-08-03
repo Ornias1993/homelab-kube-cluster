@@ -2,9 +2,8 @@ txtOwnerId: homelab-k3s-danmanners
 txtPrefix: txt.
 registry: txt
 domainFilters:
-  - danmanners.com
-  - danmanners.io
-  - k3s.danmanners.io
+  - schouten-lebbing.nl
+  - pantheon.schouten-lebbing.nl
 
 policy: sync
 interval: 30s

@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: argocd-server-public
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: argocd.k3s.danmanners.io,argocd.danmanners.com
+    external-dns.alpha.kubernetes.io/hostname: argocd.pantheon.schouten-lebbing.nl,argocd.danmanners.com
     external-dns.alpha.kubernetes.io/ttl: "300"
   labels:
     app.kubernetes.io/component: server
@@ -25,7 +25,7 @@ spec:
 #   name: argocd-server-public
 # spec:
 #   endpoints:
-#   - dnsName: argocd.k3s.danmanners.io
+#   - dnsName: argocd.pantheon.schouten-lebbing.nl
 #     recordTTL: 300
 #     recordType: CNAME
 #     targets:

@@ -97,7 +97,7 @@ additionalArguments:
 # hostNetwork: true
 # nodeSelector:
 #   node-role.kubernetes.io/cloud: "true"
-  
+
 ports:
   traefik:
     port: 9000
@@ -109,13 +109,13 @@ ports:
     expose: true
     exposedPort: 80
     protocol: TCP
-    nodePort: 80
+    nodePort: 30080
   websecure:
     port: 443
     expose: true
     exposedPort: 443
     protocol: TCP
-    nodePort: 443
+    nodePort: 30443
     tls:
       enabled: false
   metrics:
