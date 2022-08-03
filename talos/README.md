@@ -26,9 +26,7 @@ Additionally, I flashed the `metal-rpi_4-arm64` image onto the Compute Module 4 
 There's a **LOT** of configuration that can be done when settings things up. We can generate our initial config with the following commands
 
 ```bash
-talosctl gen config \
-  ${CLUSTER_NAME:="homelab"} \
-  ${CLUSTER_ENDPOINT:="homelab.k3s.danmanners.io"}
+talosctl gen config pantheon pantheon.schouten-lebbing.nl
 ```
 
 This will generate several files:
