@@ -1,6 +1,9 @@
 creation_rules:
-  - path_regex: talos/.*
+  - path_regex: talos/*
     pgp: 1B9AA9EB9919843CDD0B8983966F446F201E8DDD
-  - path_regex: manifests/.*\.sops\.ya?ml
+  - path_regex: manifests.*\.sops\.ya?ml
+    encrypted_regex: "^(data|stringData)$"
+    pgp: 1B9AA9EB9919843CDD0B8983966F446F201E8DDD
+  - path_regex: .sops.asc
     encrypted_regex: "^(data|stringData)$"
     pgp: 1B9AA9EB9919843CDD0B8983966F446F201E8DDD

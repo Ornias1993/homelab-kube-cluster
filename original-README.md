@@ -47,7 +47,7 @@ source .env/bin/activate
 # Ensure that Pip is up to date and that the required libraries are installed
 pip install -U pip && pip install -r pip_req.txt
 
-# Generate your bcrypt 
+# Generate your bcrypt
 export ARGO_PASSWORD="$(python genArgoPassword.py 'PasswordGoesHere')"
 
 # Update the Password for ArgoCD
@@ -108,4 +108,3 @@ openssl x509 -req -days 1827 \
   -CA ca.crt -CAkey ca.key \
   -set_serial $(openssl rand -base64 128 | sed 's/[^0-9]*//g' | paste -sd+ - | bc)
 ```
-

@@ -207,12 +207,12 @@ If we give everything another ~3 minutes or so to start up, we can label each of
 ```bash
 # AMD64 Hosts
 for hostid in {01,02,03,04}; do \
-  kubectl label node talos-wn${hostid} node-role.kubernetes.io/amd64=true; 
+  kubectl label node talos-wn${hostid} node-role.kubernetes.io/amd64=true;
 done
 
 # ARM64 Hosts
 for hostid in {01,02,03,04}; do \
-  kubectl label node talos-cm${hostid} node-role.kubernetes.io/arm64=true; 
+  kubectl label node talos-cm${hostid} node-role.kubernetes.io/arm64=true;
 done
 ```
 
