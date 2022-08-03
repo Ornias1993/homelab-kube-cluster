@@ -11,14 +11,9 @@ spec:
     ipPools:
       - blockSize: 26
         cidr: "10.42.0.0/16"
-        encapsulation: "VXLANCrossSubnet"
-        natOutgoing: Enabled
-        nodeSelector: all()
-    nodeAddressAutodetectionV4:
-      cidrs:
-        - "192.168.10.200/24"
-  nodeMetricsPort: 9091
-  typhaMetricsPort: 9093
+      encapsulation: VXLANCrossSubnet
+      natOutgoing: Enabled
+      nodeSelector: all()
 
 ---
 
