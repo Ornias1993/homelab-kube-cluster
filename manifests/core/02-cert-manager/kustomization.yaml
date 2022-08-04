@@ -10,4 +10,6 @@ resources:
   - https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.yaml
   # One-Time Deployment Resources
   - ClusterIssuer.yaml
-  - secret.sops.yaml
+
+generators:
+  - ./secret-generator.yaml
