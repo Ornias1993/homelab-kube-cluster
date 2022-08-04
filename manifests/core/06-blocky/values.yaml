@@ -6,8 +6,6 @@
       type: deployment
       strategy: RollingUpdate
       replicas: 2
-    env:
-      TZ: "America/New_York"
     service:
       main:
         ports:
@@ -30,13 +28,6 @@
             protocol: UDP
             targetPort: 53
         externalTrafficPolicy: Local
-    metrics:
-      enabled: false
-      serviceMonitor:
-        interval: 30s
-        scrapeTimeout: 10s
-      prometheusRule:
-        enabled: false
     config: |
       upstream:
         default:
@@ -78,16 +69,6 @@
       httpPort: 4000
       logFormat: json
       logLevel: info
-    persistence:
-      whitelists:
-        enabled: true
-        mountPath: /app/whitelists
-        type: custom
-        volumeSpec:
-          configMap:
-            name: blocky-whitelist
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: "blocky-config"
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
