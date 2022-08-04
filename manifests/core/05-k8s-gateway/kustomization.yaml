@@ -6,6 +6,6 @@ helmCharts:
   - releaseName: k8s-gateway
     name: k8s-gateway
     namespace: core
-    repo: https://kubernetes-sigs.github.io/external-dns
+    repo: https://charts.truecharts.org
     version: "6.1.8"
     valuesFile: values.yaml
