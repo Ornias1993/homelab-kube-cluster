@@ -161,14 +161,28 @@ Below is a list of the hardware (both physical and virtual) in use on this proje
 
 While this section is _very much_ a Work-in-Progress, I'd like to provide some relevant information on core services that must be deployed and in which order.
 
+### Quick Start
+
 1. [Talos Linux](talos/)
-2. [Cilium CNI](manifests/bootstrapping/01-cilium/)
-3. [MetalLB](manifests/bootstrapping/02-metallb/)
-4. [Cert-Manager](manifests/bootstrapping/03-cert-manager/)
-5. [External-DNS](manifests/bootstrapping/04-external-dns/)
-6. [Traefik](manifests/bootstrapping/05-traefik/)
-7. [ArgoCD - Part One](manifests/bootstrapping/06-argocd/)
-8. [ArgoCD - Part Two](manifests/bootstrapping/07-bootstrapping-argoprojects/)
+
+To bootstrap Talos Linux node 1:
+
+- Load the ISO
+- Note the IP address
+- Provision Talos Master-01: `talosctl apply-config --insecure --nodes ${IPADDRESS} --file controlplane-01.yaml`
+- Load TalosConfig: `mkdir -p ~/.talos && cp talosconfig ~/.talos/config`
+- Update the endpoint: `talosctl config endpoint 192.168.10.211`
+- Bootstrap Talos Master-01 after 60 seconds: `talosctl bootstrap -n 192.168.10.211`
+- Optionally (needed sometimes), load the config again: `talosctl apply-config  --nodes 192.168.10.211 --file controlplane-01.yaml`
+- Update the endpoint: `talosctl config endpoint pantheon.schouten-lebbing.nl`
+- Load KubeConfig: talosctl kubeconfig --nodes pantheon.schouten-lebbing.nl ~/.kube/config
+- Provision other Master-02: `talosctl apply-config --insecure --nodes ${IPADDRESS} --file controlplane-02.yaml`
+- Provision other Master-03: `talosctl apply-config --insecure --nodes ${IPADDRESS} --file controlplane-03.yaml`
+- Decrypt sops certificate: `sops -d --in-place sops.asc`
+- Load sops secret: `kubectl create secret generic sops-gpg --namespace=core --from-file=sops.asc`
+- bootstrap argocd: `cd manifests/bootstrapping/00-argocd && kustomize build --enable-alpha-plugins | kubectl apply -f - && cd -`
+- Wait a few minuts
+- Load core argocd applications: `cd manifests/core && kustomize build --enable-alpha-plugins | kubectl apply -f - && cd -`
 
 ## Identifying Problems, Troubleshooting Steps, and more
 
