@@ -1,0 +1,12 @@
+service:
+  main:
+    ports:
+      main:
+        protocol: UDP
+        port: 5353
+        targetPort: 5353
+
+# -- list of processed domains
+domains:
+  # -- Delegated domain
+  - domain: "pantheon.schouten-lebbing.nl"
