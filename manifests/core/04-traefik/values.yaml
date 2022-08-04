@@ -109,19 +109,16 @@ ports:
     expose: true
     exposedPort: 80
     protocol: TCP
-    nodePort: 30080
   websecure:
     port: 443
     expose: true
     exposedPort: 443
     protocol: TCP
-    nodePort: 30443
     tls:
       enabled: false
   metrics:
     port: 9101
     expose: false
-    exposedPort: 9101
     protocol: TCP
 
 # Pod Resources
