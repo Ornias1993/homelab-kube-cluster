@@ -115,7 +115,7 @@ ports:
     exposedPort: 443
     protocol: TCP
     tls:
-      enabled: false
+      enabled: true
   metrics:
     port: 9101
     expose: false
