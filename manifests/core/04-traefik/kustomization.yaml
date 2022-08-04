@@ -19,6 +19,7 @@ resources:
   - traefik-dashboard.yaml
   # Error Pages
   - middlewares.yaml
+  - defaultCertificate.yaml
 
 patchesStrategicMerge:
   - service-patch.yaml

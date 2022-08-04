@@ -33,9 +33,9 @@ ingressClass:
 
 # Activate Pilot integration
 pilot:
-  enabled: true
+  enabled: false
   token: "5832658f-1297-4945-8baf-854a4be323b9"
-  dashboard: true
+  dashboard: false
 
 # Create an IngressRoute for the dashboard
 ingressRoute:

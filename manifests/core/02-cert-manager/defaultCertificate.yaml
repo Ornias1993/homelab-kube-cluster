@@ -1,0 +1,28 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: default-certificate
+spec:
+  commonName: pantheon.schouten-lebbing.nl
+  secretName: default-certificate
+  dnsNames:
+    - pantheon.schouten-lebbing.nl
+    - *.pantheon.schouten-lebbing.nl
+  issuerRef:
+    name: acme-prod
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: default-staging-certificate
+spec:
+  commonName: pantheon.schouten-lebbing.nl
+  secretName: default-staging-certificate
+  dnsNames:
+    - pantheon.schouten-lebbing.nl
+    - *.pantheon.schouten-lebbing.nl
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer

@@ -1,18 +1,4 @@
 ---
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: traefik-dashboard
-  namespace: kube-system
-spec:
-  commonName: traefik.pantheon.schouten-lebbing.nl
-  secretName: traefik-dashboard
-  dnsNames:
-    - traefik.danmanners.com
-  issuerRef:
-    name: acme-prod
-    kind: ClusterIssuer
----
 apiVersion: v1
 kind: Service
 metadata:
@@ -44,5 +30,3 @@ spec:
       services:
         - name: api@internal
           kind: TraefikService
-  tls:
-    secretName: traefik-dashboard
