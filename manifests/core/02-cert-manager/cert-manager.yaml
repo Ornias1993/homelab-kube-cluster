@@ -3,10 +3,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: cert-manager
-  namespace: core
+  namespace: argocd
 spec:
   destination:
-    namespace: core
+    namespace: cert-manager
     server: 'https://kubernetes.default.svc'
   source:
     repoURL: 'https://charts.jetstack.io'
