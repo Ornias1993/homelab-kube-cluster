@@ -4,11 +4,10 @@ kind: Certificate
 metadata:
   name: default-certificate
 spec:
-  commonName: pantheon.schouten-lebbing.nl
   secretName: default-certificate
+  commonName: "*.pantheon.schouten-lebbing.nl"
   dnsNames:
-    - pantheon.schouten-lebbing.nl
-    - *.pantheon.schouten-lebbing.nl
+    - "*.pantheon.schouten-lebbing.nl"
   issuerRef:
     name: acme-prod
     kind: ClusterIssuer
