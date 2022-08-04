@@ -5,7 +5,7 @@ metadata:
   name: traefik-dashboard
   namespace: kube-system
 spec:
-  commonName: traefik.danmanners.com
+  commonName: traefik.pantheon.schouten-lebbing.nl
   secretName: traefik-dashboard
   dnsNames:
     - traefik.danmanners.com
@@ -18,38 +18,12 @@ kind: Service
 metadata:
   name: traefik-dashboard-extname
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: traefik.danmanners.com
+    external-dns.alpha.kubernetes.io/hostname: traefik.pantheon.schouten-lebbing.nl
     external-dns.alpha.kubernetes.io/ttl: "300"
 spec:
   type: ExternalName
-  externalName: kube.danmanners.com
+  externalName: pantheon.schouten-lebbing.nl
   sessionAffinity: None
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: traefik-dashboard-web
-  namespace: kube-system
-spec:
-  entryPoints:
-    - web
-  routes:
-    - match: "Host(`traefik.danmanners.com`) && PathPrefix(`/dashboard`)"
-      kind: Rule
-      services:
-        - name: api@internal
-          kind: TraefikService
-      middlewares:
-        - name: http-https-redirectscheme
-          namespace: kube-system
-    - match: "Host(`traefik.danmanners.com`) && PathPrefix(`/api`)"
-      kind: Rule
-      services:
-        - name: api@internal
-          kind: TraefikService
-      middlewares:
-        - name: http-https-redirectscheme
-          namespace: kube-system
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -60,12 +34,12 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: "Host(`traefik.danmanners.com`) && PathPrefix(`/dashboard`)"
+    - match: "Host(`traefik.pantheon.schouten-lebbing.nl`) && PathPrefix(`/dashboard`)"
       kind: Rule
       services:
         - name: api@internal
           kind: TraefikService
-    - match: "Host(`traefik.danmanners.com`) && PathPrefix(`/api`)"
+    - match: "Host(`traefik.pantheon.schouten-lebbing.nl`) && PathPrefix(`/api`)"
       kind: Rule
       services:
         - name: api@internal
