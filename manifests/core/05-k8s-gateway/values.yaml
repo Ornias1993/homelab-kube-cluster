@@ -3,8 +3,10 @@ service:
     ports:
       main:
         protocol: UDP
-        port: 5353
-        targetPort: 5353
+        port: 53
+        targetPort: 53
+        externalIPs:
+          - "192.168.10.132"
 
 # -- list of processed domains
 domains:

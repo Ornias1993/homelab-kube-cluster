@@ -11,3 +11,4 @@ resources:
   - 03-external-dns.yaml
   - 04-traefik.yaml
   - 05-k8s-gateway.yaml
+  - 06-blocky.yaml
