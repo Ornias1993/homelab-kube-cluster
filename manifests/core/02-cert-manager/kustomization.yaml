@@ -5,7 +5,7 @@ kind: Kustomization
 helmCharts:
   - releaseName: cert-manager
     name: cert-manager
-    namespace: cert-manager
+    namespace: core
     repo: https://charts.jetstack.io
     version: "v1.9.1"
     valuesFile: values.yaml

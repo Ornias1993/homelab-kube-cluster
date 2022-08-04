@@ -12,7 +12,7 @@ spec:
     targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: cert-manager
+    namespace: core
   syncPolicy:
     automated:
       prune: true
