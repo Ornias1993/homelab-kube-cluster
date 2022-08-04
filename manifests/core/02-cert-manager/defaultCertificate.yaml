@@ -9,5 +9,5 @@ spec:
   dnsNames:
     - "*.pantheon.schouten-lebbing.nl"
   issuerRef:
-    name: acme-prod
+    name: letsencrypt-prod
     kind: ClusterIssuer
