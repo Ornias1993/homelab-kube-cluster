@@ -7,12 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: "Host(`traefik.pantheon.schouten-lebbing.nl`) && PathPrefix(`/dashboard`)"
-      kind: Rule
-      services:
-        - name: api@internal
-          kind: TraefikService
-    - match: "Host(`traefik.pantheon.schouten-lebbing.nl`) && PathPrefix(`/api`)"
+    - match: "Host(`traefik.pantheon.schouten-lebbing.nl`)"
       kind: Rule
       services:
         - name: api@internal
