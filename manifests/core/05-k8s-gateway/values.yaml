@@ -1,5 +1,6 @@
 service:
   main:
+    type: LoadBalancer
     ports:
       main:
         protocol: UDP
