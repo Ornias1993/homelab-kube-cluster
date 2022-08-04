@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: core
 
 resources:
+  - namespace.yaml
   - 00-argocd.yaml
   - 01-metallb.yaml
   - 02-cert-manager.yaml

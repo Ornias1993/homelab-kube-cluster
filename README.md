@@ -169,20 +169,23 @@ To bootstrap Talos Linux node 1:
 
 - Load the ISO
 - Note the IP address
-- Provision Talos Master-01: `talosctl apply-config --insecure --nodes ${IPADDRESS} --file controlplane-01.yaml`
+- Decrypt sops certificate: `sops -d --in-place sops.asc`
+- Decrypt the talos files: `cd talos && sops -d --in-place talosconfig && find -name "*.yaml" | xargs -I % sh -c 'sops -d --in-place %' && cd -`
+- Provision Talos Master-01: `talosctl apply-config --insecure --nodes ${IPADDRESS} --file talos/master-01.yaml`
 - Load TalosConfig: `mkdir -p ~/.talos && cp talosconfig ~/.talos/config`
 - Update the endpoint: `talosctl config endpoint 192.168.10.211`
 - Bootstrap Talos Master-01 after 60 seconds: `talosctl bootstrap -n 192.168.10.211`
-- Optionally (needed sometimes), load the config again: `talosctl apply-config  --nodes 192.168.10.211 --file controlplane-01.yaml`
+- (optional) load the config again: `talosctl apply-config  --nodes 192.168.10.211 --file talos/master-01.yaml`
 - Update the endpoint: `talosctl config endpoint pantheon.schouten-lebbing.nl`
 - Load KubeConfig: talosctl kubeconfig --nodes pantheon.schouten-lebbing.nl ~/.kube/config
-- Provision other Master-02: `talosctl apply-config --insecure --nodes ${IPADDRESS} --file controlplane-02.yaml`
-- Provision other Master-03: `talosctl apply-config --insecure --nodes ${IPADDRESS} --file controlplane-03.yaml`
-- Decrypt sops certificate: `sops -d --in-place sops.asc`
-- Load sops secret: `kubectl create secret generic sops-gpg --namespace=core --from-file=sops.asc`
-- bootstrap argocd: `cd manifests/bootstrapping/00-argocd && kustomize build --enable-alpha-plugins | kubectl apply -f - && cd -`
+- (optional)Provision other Master-02: `talosctl apply-config --insecure --nodes ${IPADDRESS} --file talos/master-02.yaml`
+- (optional)Provision other Master-03: `talosctl apply-config --insecure --nodes ${IPADDRESS} --file talos/master-03.yaml`
+- (optional)Remove master no-exec taints: `kubectl taint nodes $(kubectl get nodes --selector=node-role.kubernetes.io/master | awk 'FNR==2{print $1}') node-role.kubernetes.io/master:NoSchedule-`
+- bootstrap argocd: `cd manifests/bootstrapping/00-argocd && kustomize build --enable-alpha-plugins | kubectl apply -f - || true && cd -`
+- Load sops secret: `kubectl create secret generic sops-gpg --namespace=argocd --from-file=sops.asc`
 - Wait a few minuts
-- Load core argocd applications: `cd manifests/core && kustomize build --enable-alpha-plugins | kubectl apply -f - && cd -`
+- Load core argocd applications: `cd manifests/core && kustomize build --enable-alpha-plugins | kubectl apply -f - || true && cd -`
+- reencrypt the used content: `sops -e --in-place sops.asc && cd talos && sops -e --in-place talosconfig && find -name "*.yaml" | xargs -I % sh -c 'sops -e --in-place %' && cd -`
 
 ## Identifying Problems, Troubleshooting Steps, and more
 
