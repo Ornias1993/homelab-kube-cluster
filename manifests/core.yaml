@@ -12,7 +12,7 @@ spec:
       - path: manifests/core/*
   template:
     metadata:
-      name: '{{path[0]}}'
+      name: '{{path.basename}}'
     spec:
       project: "default"
       source:
@@ -21,4 +21,4 @@ spec:
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}'
+        namespace: 'core'
