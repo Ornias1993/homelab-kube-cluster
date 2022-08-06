@@ -2,17 +2,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: "traefik"
+  name: "rook-ceph"
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: "https://github.com/Ornias1993/homelab-kube-cluster.git"
-    path: manifests/core/04-traefik
+    path: manifests/core/rook-ceph
     targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: core
+    namespace: rook-ceph
   syncPolicy:
     automated:
       prune: true

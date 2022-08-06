@@ -2,17 +2,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: "cert-manager"
+  name: "traefik"
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: "https://github.com/Ornias1993/homelab-kube-cluster.git"
-    path: manifests/core/02-cert-manager
+    path: manifests/core/traefik
     targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: cert-manager
+    namespace: core
   syncPolicy:
     automated:
       prune: true

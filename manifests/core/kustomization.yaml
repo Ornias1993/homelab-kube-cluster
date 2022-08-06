@@ -5,10 +5,11 @@ namespace: argocd
 
 resources:
   - namespace.yaml
-  - 00-argocd.yaml
-  - 01-metallb.yaml
-  - 02-cert-manager.yaml
-  - 03-external-dns.yaml
-  - 04-traefik.yaml
-  - 05-k8s-gateway.yaml
-  - 06-blocky.yaml
+  - argocd.yaml
+  - metallb.yaml
+  - cert-manager.yaml
+  - external-dns.yaml
+  - traefik.yaml
+  - k8s-gateway.yaml
+  - blocky.yaml
+  - rook-ceph.yaml

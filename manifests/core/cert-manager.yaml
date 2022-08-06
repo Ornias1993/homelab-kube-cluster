@@ -2,17 +2,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: "metallb"
+  name: "cert-manager"
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: "https://github.com/Ornias1993/homelab-kube-cluster.git"
-    path: manifests/core/01-metallb
+    path: manifests/core/cert-manager
     targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: core
+    namespace: cert-manager
   syncPolicy:
     automated:
       prune: true
