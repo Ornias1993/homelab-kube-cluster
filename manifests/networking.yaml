@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: networking
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/Ornias1993/homelab-kube-cluster.git
+      revision: main
+      directories:
+      - path: manifests/networking/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/Ornias1993/homelab-kube-cluster.git
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'networking'

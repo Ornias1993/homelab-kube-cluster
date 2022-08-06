@@ -5,3 +5,6 @@ kind: Kustomization
 resources:
   - core.yaml
   - argocd.yaml
+  - networking.yaml
+  - private.yaml
+  - public.yaml
