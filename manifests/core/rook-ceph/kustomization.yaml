@@ -5,7 +5,7 @@ kind: Kustomization
 helmCharts:
   - releaseName: rook-ceph
     name: rook-ceph
-    namespace: rook-ceph
+    namespace: core
     repo: https://charts.rook.io/release
     version: "v1.9.8"
     valuesFile: values.yaml
