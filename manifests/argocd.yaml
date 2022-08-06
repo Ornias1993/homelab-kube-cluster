@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     repoURL: "https://github.com/Ornias1993/homelab-kube-cluster.git"
-    path: manifests/core/argocd
+    path: manifests/argocd
     targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
