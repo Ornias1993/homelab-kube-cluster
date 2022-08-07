@@ -5,13 +5,10 @@ kind: Kustomization
 generators:
   - ./secret-generator.yaml
 
-resources:
-  - release-runner.yaml
-
 helmCharts:
   - releaseName: actions-runner-controller
     name: actions-runner-controller
     namespace: actions-runner-system
     repo: https://actions-runner-controller.github.io/actions-runner-controller
-    version: "10.4.8"
+    version: "0.20.2"
     valuesFile: values.yaml
