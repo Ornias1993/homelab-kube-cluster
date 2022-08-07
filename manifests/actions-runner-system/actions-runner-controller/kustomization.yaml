@@ -15,3 +15,4 @@ helmCharts:
     repo: https://actions-runner-controller.github.io/actions-runner-controller
     version: "0.20.2"
     valuesFile: values.yaml
+    skipCRDs: true
