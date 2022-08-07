@@ -13,4 +13,3 @@ helmCharts:
 
 resources:
   - gpu-extension.yaml
-  - test-pod.yaml
