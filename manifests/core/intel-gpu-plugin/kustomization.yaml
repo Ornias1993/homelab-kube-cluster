@@ -1,0 +1,11 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - releaseName: intel-gpu-plugin
+    name: intel-gpu-plugin
+    namespace: core
+    repo: https://k8s-at-home.com/charts/
+    version: "4.4.2"
+    valuesFile: values.yaml
