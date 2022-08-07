@@ -8,3 +8,5 @@ spec:
   template:
     spec:
       organization: truecharts
+      labels:
+        - release-runner
