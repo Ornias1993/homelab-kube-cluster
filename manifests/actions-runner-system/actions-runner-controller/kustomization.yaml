@@ -5,6 +5,8 @@ kind: Kustomization
 generators:
   - ./secret-generator.yaml
 
+resources:
+  - ./crd-application.yaml
 
 helmCharts:
   - releaseName: actions-runner-controller
