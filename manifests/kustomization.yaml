@@ -9,3 +9,4 @@ resources:
   - private.yaml
   - public.yaml
   - actions-runner-system.yaml
+  - actions-runner.yaml
