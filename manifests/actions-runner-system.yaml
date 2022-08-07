@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: actions-runner-system
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/Ornias1993/homelab-kube-cluster.git
+      revision: main
+      directories:
+      - path: manifests/actions-runner-system/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/Ornias1993/homelab-kube-cluster.git
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'actions-runner-system'
+      syncPolicy:
+        automated:
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
