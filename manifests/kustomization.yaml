@@ -8,3 +8,4 @@ resources:
   - networking.yaml
   - private.yaml
   - public.yaml
+  - actions-runner-system.yaml
