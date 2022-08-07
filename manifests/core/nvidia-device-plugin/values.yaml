@@ -1,0 +1,2 @@
+nodeSelector:
+  feature.node.kubernetes.io/pci-0300_10DE.present: "true"
