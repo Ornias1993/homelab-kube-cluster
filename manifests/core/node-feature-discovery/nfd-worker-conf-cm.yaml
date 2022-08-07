@@ -13,3 +13,6 @@ data:
         - usbId:
             vendor: ["27b8"]
             # device: ["004"]
+      pci:
+        deviceLabelFields:
+        - "vendor"
