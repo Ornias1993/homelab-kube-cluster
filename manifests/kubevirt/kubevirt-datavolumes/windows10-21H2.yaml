@@ -1,0 +1,18 @@
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  annotations:
+    cdi.kubevirt.io/storage.bind.immediate.requested: "true"
+    kubevirt.ui/provider: windows10-21H2
+  name: windows10-21H2
+spec:
+  pvc:
+    storageClassName: openebs-hostpath
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 20Gi
+  source:
+    http:
+      url: https://www.itechtics.com/?dl_id=151
