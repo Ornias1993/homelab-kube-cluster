@@ -7,4 +7,4 @@ resources:
 - debian11.yaml
 - ubuntu2004.yaml
 - ubuntu2204.yaml
-- windows10-21H2.yaml
+- windows10-21h2.yaml
