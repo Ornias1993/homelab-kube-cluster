@@ -15,4 +15,4 @@ spec:
         storage: 20Gi
   source:
     http:
-      url: jammy-server-cloudimg-amd64.img
+      url: https://cloud-images.ubuntu.com/jammy/20220718/jammy-server-cloudimg-arm64.img
