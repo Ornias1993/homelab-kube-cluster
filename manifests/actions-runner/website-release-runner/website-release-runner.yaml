@@ -8,3 +8,5 @@ spec:
   template:
     spec:
       repository: truecharts/website
+      labels:
+        - website-release-runner

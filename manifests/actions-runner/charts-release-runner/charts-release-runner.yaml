@@ -8,3 +8,5 @@ spec:
   template:
     spec:
       repository: truecharts/charts
+      labels:
+        - charts-release-runner

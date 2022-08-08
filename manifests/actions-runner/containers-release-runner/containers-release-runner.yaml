@@ -8,3 +8,5 @@ spec:
   template:
     spec:
       repository: truecharts/containers
+      labels:
+        - containers-release-runner
