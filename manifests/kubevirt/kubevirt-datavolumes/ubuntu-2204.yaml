@@ -7,12 +7,12 @@ metadata:
   name: ubuntu2204
 spec:
   pvc:
+    storageClassName: openebs-hostpath
     accessModes:
     - ReadWriteOnce
     resources:
       requests:
         storage: 20Gi
-    volumeMode: Filesystem
   source:
     http:
       url: jammy-server-cloudimg-amd64.img
