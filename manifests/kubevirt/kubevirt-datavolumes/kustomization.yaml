@@ -4,3 +4,6 @@ kind: Kustomization
 resources:
 - fedora.yaml
 - centos8.yaml
+- debian11.yaml
+- ubuntu2004.yaml
+- ubuntu2204.yaml
