@@ -10,3 +10,4 @@ resources:
   - public.yaml
   - actions-runner-system.yaml
   - actions-runner.yaml
+  - kubevirt.yaml
