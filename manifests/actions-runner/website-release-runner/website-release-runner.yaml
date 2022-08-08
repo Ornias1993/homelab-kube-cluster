@@ -2,11 +2,9 @@
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
-  name: release-runner
+  name: website-release-runner
 spec:
-  replicas: 4
+  replicas: 2
   template:
     spec:
-      organization: truecharts
-      labels:
-        - release-runner
+      repository: truecharts/website

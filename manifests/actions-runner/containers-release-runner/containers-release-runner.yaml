@@ -1,0 +1,10 @@
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: containers-release-runner
+spec:
+  replicas: 2
+  template:
+    spec:
+      repository: truecharts/containers
