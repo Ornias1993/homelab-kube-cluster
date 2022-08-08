@@ -1,0 +1,18 @@
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  annotations:
+    cdi.kubevirt.io/storage.bind.immediate.requested: "true"
+    kubevirt.ui/provider: ubuntu2004
+  name: ubuntu2004
+spec:
+  pvc:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 20Gi
+    volumeMode: Filesystem
+  source:
+    http:
+      url: https://cloud-images.ubuntu.com/jammy/20220718/jammy-server-cloudimg-amd64.img
